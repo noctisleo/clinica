@@ -38,7 +38,8 @@ while (true) {
         consultas.push(consulta);
         console.log("Cadastrada com sucesso!");
       break;
-    case "2", "4":
+    case "4", "3":
+    case "2":
         consultas.forEach(function(consulta, indice) {
             console.log(`
 Consulta ${indice + 1}:
@@ -49,14 +50,22 @@ Horário: ${consulta.horario}1
                 `)
         })
         if(opcao == '4') {
-            console.log("Aqui")
-            let indice = prompt("Escolha uma consulta");
+            let indice = prompt("Escolha uma consulta para remover");
             consultas.splice(indice - 1, 1)
+
+            console.log("Removida com sucesso!");
+        } else if(opcao == "3") {
+            let indice = prompt("Escolha uma consulta para atualizar");
+            consultas[indice - 1].paciente = prompt("Qual o novo nome do paciente?");
+            consultas[indice - 1].medico = prompt("Qual o novo nome do medico?");
+            consultas[indice - 1].data = prompt("Qual a nova data da consulta?");
+            consultas[indice - 1].horario = prompt("Qual o novo horário da consulta?");
+
+            console.log("Atualizada com sucesso!");
         }
       break;
-    case "3":
-      break;
     case "0":
+        process.exit(0)
       break;
 
     default:
